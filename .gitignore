@@ -1,0 +1,32 @@
+# ─── Arquivos temporários do Jupyter ───
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ─── Python ───
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# ─── Ambientes virtuais ───
+venv/
+env/
+.venv/
+.env
+
+# ─── Dados brutos ───
+chest_xray/
+kagglehub/
+~/.cache/kagglehub/
+
+# ─── Modelos treinados ───
+models/*.pt
+models/*.pth
+
+# ─── Outros ───
+.DS_Store
+*.log
+.vscode/
+.idea/
+*:Zone.Identifier
