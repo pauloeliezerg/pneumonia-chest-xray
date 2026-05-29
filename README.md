@@ -81,8 +81,8 @@ O trabalho foi desenvolvido no contexto da disciplina **Projetos de IA (PPI SOFT
 
 | Modelo | AUC-ROC | Acurácia | F1-macro | Recall (PNEUMONIA) |
 |--------|---------|----------|----------|--------------------|
-| EfficientNet-B3 | 0,951 | 0,867 | 0,865 | 0,985 |
-| ResNet18 | 0,971 | 0,877 | 0,857 | 0,997 |
+| EfficientNet-B3 | 0,97 | 0,88 | 0,86 | 0,99 |
+| ResNet18 | 0,97 | 0,87 | 0,85 | 1,00 |
 
 **Todas as metas foram superadas por ambos os modelos.**
 
@@ -90,17 +90,17 @@ O trabalho foi desenvolvido no contexto da disciplina **Projetos de IA (PPI SOFT
 
 | Modelo | Classe | Precision | Recall | F1 |
 |--------|--------|-----------|--------|----|
-| EfficientNet-B3 | NORMAL | 0,97 | 0,66 | 0,79 |
-| EfficientNet-B3 | PNEUMONIA | 0,83 | 0,99 | 0,90 |
-| ResNet18 | NORMAL | 0,99 | 0,68 | 0,80 |
-| ResNet18 | PNEUMONIA | 0,84 | 1,00 | 0,91 |
+| EfficientNet-B3 | NORMAL | 0,98 | 0,69 | 0,81 |
+| EfficientNet-B3 | PNEUMONIA | 0,84 | 0,99 | 0,91 |
+| ResNet18 | NORMAL | 0,99 | 0,66 | 0,79 |
+| ResNet18 | PNEUMONIA | 0,83 | 1,00 | 0,91 |
 
 **Threshold ótimo por F2-score** (recall ponderado 2× sobre precisão):
 
 | Modelo | Threshold | Recall | Precision |
 |--------|-----------|--------|-----------|
-| EfficientNet-B3 | 0,869 | 0,985 | — |
-| ResNet18 | 0,612 | 0,997 | — |
+| EfficientNet-B3 | 0,791 | 0,985 | — |
+| ResNet18 | 0,763 | 0,992 | — |
 
 ---
 
