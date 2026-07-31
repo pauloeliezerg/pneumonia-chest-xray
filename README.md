@@ -54,6 +54,15 @@ O trabalho foi desenvolvido no contexto da disciplina **Projetos de IA (PPI SOFT
 - Split estratificado 85/15 interno
 - Conjunto de teste isolado — avaliado **uma única vez** por modelo
 
+**Decisão de escopo — tuning de hiperparâmetros:** a busca sistemática de
+hiperparâmetros (grid/random/Bayesiana) foi deliberadamente descartada.
+Ambos os modelos de Transfer Learning já superaram todas as metas mínimas
+(ver seção abaixo) com a configuração inicial, e o salto de desempenho sobre
+o baseline já é substancial — o tempo disponível foi priorizado para
+consolidar reprodutibilidade, documentação e a demonstração de inferência
+em vez de buscar ganhos marginais de métrica. Fica registrado como trabalho
+futuro.
+
 ---
 
 ## Baselines
@@ -110,17 +119,47 @@ Mapas de ativação **Grad-CAM** foram gerados para imagens do conjunto de teste
 
 ---
 
+## Demonstração (Deploy)
+
+O melhor checkpoint (EfficientNet-B3) foi empacotado em uma aplicação de
+inferência standalone (`app/streamlit_app.py`), que reproduz exatamente o
+pré-processamento de teste do notebook: upload de imagem → classe predita +
+probabilidade + Grad-CAM sobreposto.
+
+**Demo pública:** [`https://pneumonia-chest-xray.streamlit.app/`](https://pneumonia-chest-xray.streamlit.app/)
+
+**Rodar localmente:**
+
+Na raiz do repositório:
+
+```bash
+pip install -r app/requirements.txt
+streamlit run app/streamlit_app.py
+```
+
+> Stack: Streamlit + Streamlit Community Cloud (hospedagem gratuita e
+> persistente). Um aviso de uso acadêmico é exibido de forma fixa na
+> interface — o app não constitui dispositivo médico.
+
+---
+
 ## Estrutura do Repositório
 
 ```
 pneumonia-chest-xray/
 ├── pneumonia-chest-xray.ipynb   # Pipeline completo documentado
-├── figures/
+├── figs/
 │   ├── training_curves.png      # Curvas de loss e AUC por época
 │   ├── confusion_matrix_efficientnet_b3.png
 │   ├── confusion_matrix_resnet18.png
 │   └── gradcam_efficientnet_b3.png
 ├── models/                      # Checkpoints dos melhores modelos (.pt)
+├── app/                         # Demonstração de inferência (Streamlit)
+│   ├── streamlit_app.py
+│   ├── packages.txt
+│   ├── requirements.txt
+│   ├── README.md
+│   └── best_efficientnet_b3.pt  # checkpoint usado pela demo
 ├── requirements.txt
 └── README.md
 ```
@@ -154,6 +193,10 @@ O dataset é baixado automaticamente via `kagglehub` ao executar o notebook. É 
 ### Executar o pipeline
 
 Abra e execute o notebook `pneumonia-chest-xray.ipynb` sequencialmente no Google Colab ou em ambiente local com GPU.
+
+### Testar a demonstração de inferência
+
+Ver seção [Demonstração (Deploy)](#demonstração-deploy) acima.
 
 ---
 
