@@ -20,7 +20,7 @@ import streamlit as st
 from PIL import Image
 from torchvision import transforms
 
-from pytorch_grad_cam import GradCAM
+from pytorch_grad_cam import EigenCAM
 from pytorch_grad_cam.utils.image import show_cam_on_image
 from pytorch_grad_cam.utils.model_targets import ClassifierOutputTarget
 
@@ -59,7 +59,7 @@ def load_model():
 @st.cache_resource
 def load_cam(_model):
     target_layers = [_model.conv_head]  # última camada convolucional — mesma usada no notebook
-    return GradCAM(model=_model, target_layers=target_layers)
+    return EigenCAM(model=_model, target_layers=target_layers)
 
 
 def predict(model, cam_extractor, image: Image.Image):
